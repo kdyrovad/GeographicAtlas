@@ -21,6 +21,7 @@ class CountryTableViewCell: UITableViewCell {
     private lazy var totalView: UIView = {
         let total = UIView()
         total.layer.cornerRadius = 12
+//        total.clipsToBounds = true
         total.backgroundColor = UIColor(hexString: "#F7F8F9")
         total.isUserInteractionEnabled = true
         total.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +30,7 @@ class CountryTableViewCell: UITableViewCell {
     
     private lazy var iconView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.layer.masksToBounds = true
         image.image = UIImage(named: "kz.png")
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -140,6 +141,8 @@ class CountryTableViewCell: UITableViewCell {
         setViews()
         
         setContraints()
+        iconView.clipsToBounds = true
+        iconView.contentMode = .scaleAspectFill
     }
     
     required init?(coder: NSCoder) {

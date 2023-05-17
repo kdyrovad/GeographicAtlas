@@ -35,6 +35,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
+//        scroll.clipsToBounds = true
         scroll.delegate = self
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
@@ -53,9 +54,9 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         image.contentMode = .scaleAspectFit
         image.image = UIImage(named: "kz.png")
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 20
         image.clipsToBounds = true
         image.layer.masksToBounds = true
+        image.layer.cornerRadius = 8
         return image
     }()
     
@@ -261,11 +262,12 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = view.bounds.size
         
         view.addSubview(scrollView)
-        
-        flagImage.clipsToBounds = true
+
         [flagImage, regionLabel, regionNameLabel, dotLabel1, dotLabel2, dotLabel3, dotLabel4, dotLabel5, dotLabel6, dotLabel7, capitalLabel, capitalNameLabel, coordinatesLabel, coordinatesNameLabel, populationLabel, populationNameLabel, areaLabel, areaNameLabel, currencyLabel, currencyNameLabel, timezoneLabel, timezoneNameLabel].forEach { scrollView.addSubview($0) }
         
         setConstraints()
+        
+        flagImage.contentMode = .scaleAspectFill
     }
     
     func configure(for model: CountryModelProtocol) {
@@ -283,24 +285,23 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let layout = view.safeAreaLayoutGuide
-        scrollView.centerXAnchor.constraint(equalTo: layout.centerXAnchor).isActive = true
-        scrollView.centerYAnchor.constraint(equalTo: layout.centerYAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalTo: layout.widthAnchor).isActive = true
-        scrollView.heightAnchor.constraint(equalTo: layout.heightAnchor).isActive = true
+        flagImage.layer.cornerRadius = 20
     }
     
     //MARK: - Constraints
     
     private func setConstraints() {
+        let layout = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.centerXAnchor.constraint(equalTo: layout.centerXAnchor),
+            scrollView.centerYAnchor.constraint(equalTo: layout.centerYAnchor),
+            scrollView.widthAnchor.constraint(equalTo: layout.widthAnchor),
+            scrollView.heightAnchor.constraint(equalTo: layout.heightAnchor),
             
             flagImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30),
-            flagImage.widthAnchor.constraint(equalToConstant: 370),
-            flagImage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            flagImage.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32),
+            flagImage.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
+            flagImage.heightAnchor.constraint(equalToConstant: 200),
             
             regionLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 48),
             regionLabel.topAnchor.constraint(equalTo: flagImage.bottomAnchor, constant: 21),
