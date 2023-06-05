@@ -12,4 +12,4 @@ GeographicAtlas is the app which allows users to:
 5. Write safe code, leave no possibility of crashes
 
 # **Video**
-https://github.com/kdyrovad/GeographicAtlas/assets/103488736/9fb65828-a0f9-461b-96f8-fa6884a01ca9
+https://github.com/kdyrovad/GeographicAtlas/assets/103488736/79c9f844-ac8b-435c-b385-6eccb0ac236c
