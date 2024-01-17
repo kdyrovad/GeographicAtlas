@@ -19,7 +19,7 @@ GeographicAtlas empowers users to:
 4. Follow the **MVP architecture** pattern for a structured and scalable app design.
 
 ## **Demo**
-![](https://github.com/kdyrovad/GeographicAtlas/assets/103488736/79c9f844-ac8b-435c-b385-6eccb0ac236c)
+https://github.com/kdyrovad/GeographicAtlas/assets/103488736/79c9f844-ac8b-435c-b385-6eccb0ac236c
 
 ## **Getting Started**
 To begin your journey with GeographicAtlas:
